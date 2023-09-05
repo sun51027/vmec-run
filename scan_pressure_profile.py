@@ -3,7 +3,7 @@ import shutil
 import subprocess
 
 # Define the ranges for PRES_SCALE
-press_range = [i * 1000 for i in range(1, 10)]
+press_range = [i * 100 for i in range(1, 10)]
 
 # Define the input file name
 input_file_name = "input.first_init.vmec"
@@ -28,7 +28,6 @@ for press in press_range:
 
     # Copy the original input file to the modified name
     shutil.copy(input_file_name, new_input_file_name)
-    subprocess.run("mv {} input".format(new_input_file_name),shell=True)
 
     # Modify the content of the copied input file
     with open(new_input_file_name, "r+") as f:
@@ -63,6 +62,7 @@ for press in press_range:
         #print(target_path)
         subprocess.run("mv {} {}".format(source_file,target_path),shell=True)
 
+    subprocess.run("mv {} input".format(new_input_file_name),shell=True)
 
 print("Script execution completed.")
 

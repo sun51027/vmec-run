@@ -47,10 +47,10 @@ for mpol in mpol_range:
         # Create distinct output file names
         #file_names = {
         #    "dcon": "dcon_m{}_RBC{:.3f}.vmec.txt".format(mpol, rbc_value),
-        #    "threed1": "threed1_m{}_RBC{:.3f}.vmec".format(mpol, rbc_value),
+        #    "threed1": "threed1.m{}_RBC{:.3f}.vmec".format(mpol, rbc_value),
         #    "wout": "wout_m{}_RBC{:.3f}.vmec.nc".format(mpol, rbc_value),
         #    "jxbout": "jxbout_m{}_RBC{:.3f}.vmec.nc".format(mpol, rbc_value),
-        #    "mercier": "mercier_m{}_RBC{:.3f}.vmec".format(mpol, rbc_value)
+        #    "mercier": "mercier.m{}_RBC{:.3f}.vmec".format(mpol, rbc_value)
         #}
 
         ## Move output files to appropriate directories with distinct names

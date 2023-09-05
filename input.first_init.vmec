@@ -11,7 +11,7 @@ FTOL_ARRAY = 1.0E-20,
 NITER = 25000,
 NSTEP = 1000,
 NTOR = 0, 
-MPOL = 5,
+MPOL = 6,
 NZETA = 1,
 NVACSKIP = 9,
 LASYM = F,
@@ -22,24 +22,29 @@ PHIEDGE = -0.05,
 BLOAT = 1.0,
 
 ! Initial Position.
-RAXIS(0) = 0.607,
+
+RAXIS(0) = 0.5,
 ZAXIS(0) = 0.0,
-RBC(0,0) = 0.607,
-RBC(0,1) = 0.3,
-RBC(0,2) = 0.06,
+
+RBC(0,0) = 0.5,
+RBC(0,1) = 0.25,
+RBC(0,2) = 0.0612,
+RBC(0,3) = 0.00,
+RBC(0,4) = 0.0003,
+
 ZBS(0,0) = 0.0,
-ZBS(0,1) = 0.6,
+ZBS(0,1) = 0.5,
 
 ! Plasma current parameters.
 NCURR = 1,
 CURTOR = 100000.0,
-AC = 1.0, 5.0, 10.0
+AC = 1.0, 2.0, 1.0
 PCURR_TYPE = 'two_power',
 
 ! Plasma pressure parameters.
 SPRES_PED = 1.0,
-PRES_SCALE = 100.0,
-AM = 1., 5.0, 10.0
+PRES_SCALE = 1000.0,
+AM = 1., 10.0, 10.0
 pmass_type = 'two_power',
 
 !am_aux_s = 0.0, 0.5, 1.0
