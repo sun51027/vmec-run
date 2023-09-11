@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # single file
-equil_file="dcon_first_init.vmec.txt"
+equil_file=${1}
 
 # Store the current directory
 current_dir=$(pwd)

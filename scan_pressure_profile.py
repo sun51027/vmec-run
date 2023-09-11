@@ -3,7 +3,7 @@ import shutil
 import subprocess
 
 # Define the ranges for PRES_SCALE
-press_range = [i * 100 for i in range(1, 10)]
+press_range = [i * 100 for i in range(60,61)]
 
 # Define the input file name
 input_file_name = "input.first_init.vmec"
