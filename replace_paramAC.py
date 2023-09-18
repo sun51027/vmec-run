@@ -14,8 +14,8 @@ command_list = []
 curr_prof = "curr_2p" #two_power
 #curr_prof = "2p_gs" #two_power_gs
 
-AC_Ranges = (range(1,3),range(3,5),range(9,11))
-#AC_Ranges = (range(1,10),range(3,10),range(5,11))
+#AC_Ranges = (range(1,3),range(3,5),range(9,11))
+AC_Ranges = (range(1,10),range(3,10),range(5,11))
 
 # open files
 
@@ -58,9 +58,9 @@ def submit_jobs():
     if args.dryRun:
         for command in command_list: print(command)
     else:
-        for command in command_list: exe(command)
+        #for command in command_list: exe(command)
         
-        #pu.submit_jobs(command_list,10)
+        pu.submit_jobs(command_list,10)
 
 def mkdir():
     command = ("mkdir -p output/{}/threed1 "
