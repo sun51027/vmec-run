@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import argparse
 import subprocess
@@ -28,7 +29,7 @@ equil_file_list=[]
 if os.path.exists(dcon_output):
     os.remove(dcon_output)
 
-dcon_stable_case_txt = os.path.join(current_dir, "dcon_stable_case.test.txt")
+dcon_stable_case_txt = os.path.join(current_dir, "dcon_stable_case.txt")
 if os.path.exists(dcon_stable_case_txt):
     os.remove(dcon_stable_case_txt)
 
@@ -62,16 +63,33 @@ def check_stable():
     if args.dryRun:
        print("check stable for equilibria: {}".format(equil_file))
     else:
-        with open(dcon_output, "r") as dcon_output_file:
-            output_contents = dcon_output_file.read()
-   
-        if "Zero" in output_contents or "unstable" in output_contents:
-           print("unstable case, skipped.")
-        else:
-           print("STABLE case is found in {}".format(equil_file))
-           print(">>>>>>>>>  then check q factor.")
-           with open(os.path.join(current_dir, "dcon_stable_case.test.txt"), "a") as stable_case_file:
-                stable_case_file.write(os.path.realpath(equil_file) + "\n")
+       with open(dcon_output, "r") as dcon_output_file:
+           output_contents = dcon_output_file.read()
+       if "Zero" in output_contents or "unstable" in output_contents:
+          print("....... unstable case, skipped.\n")
+       else: 
+          print("....... STABLE case, check qmin:\n")
+          with open(dcon_output, "r") as dcon_output_file:
+             lines = dcon_output_file.readlines()
+             for index,line in enumerate(lines):
+                 if 'qmin' not in line:
+                    continue
+                 check_q_factor(line)
+
+def check_q_factor(line):
+       match = re.search(r'qmin\s*=\s*([\d.E+-]+)', line)
+
+       if match:
+          qmin_str = match.group(1)  # Extract the qmin string
+          qmin = float(qmin_str)    # Convert the qmin string to a float
+          if qmin < 1:
+             print("         qmin: {} < 1, discard it\n".format(qmin))
+          else: 
+             print("         qmin: {} > 1 is found, preserve it\n".format(qmin))
+             #print("STABLE case is found in {}".format(equil_file))
+             with open(dcon_stable_case_txt, "a") as stable_case_file:
+                  stable_case_file.write(os.path.realpath(equil_file) + "\n")
+
     
 
 if __name__=="__main__":
@@ -80,6 +98,7 @@ if __name__=="__main__":
     for root, _, files in os.walk(target_directory):
         for file in files:
             equil_file = os.path.join(root, file)
+            print("Running {}".format(equil_file))
             replace_equilfile(equil_file)
             run_dcon()
             check_stable()
