@@ -3,36 +3,41 @@ import re
 import shutil
 import argparse
 import subprocess
-import warnings
-
-# Mute all warnings
-warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-d','--dryRun', help='do not submit jobs', action='store_true')
+parser.add_argument('-d','--dryRun', help='do not execute the script', action='store_true')
 args = parser.parse_args()
 
 # Get the current directory
 current_dir = os.getcwd()
+
+# path to be defined maunally
 target_directory = "{}/output/curr_2p/dcon/".format(current_dir)
 dcon_dir = "/home/linshih/workspace/dcon_3.80/dcon_3.80/rundir/Linux"
+
+# path of input and output files
 dcon_output = "{}/dcon_output.txt".format(current_dir)
 dcon_equil_in = "{}/equil.in".format(dcon_dir)
 dcon_in= "{}/dcon.in".format(dcon_dir)
-equil_file_list=[]
+dcon_stable_case_txt = "{}/dcon_stable_case.txt".format(current_dir)
 
-# for local test
-#dcon_equil_in = "{}/test.in".format(current_dir)
-#dcon_dir = current_dir
-#target_directory = "{}/testdcon".format(current_dir)
+## for local test
+# dcon_equil_in = "{}/test.in".format(current_dir)
+# dcon_dir = current_dir
+# target_directory = "{}/testdcon".format(current_dir)
 
 # Remove the dcon_output.txt and dcon_stable_case.txt if they exist
 if os.path.exists(dcon_output):
     os.remove(dcon_output)
 
-dcon_stable_case_txt = os.path.join(current_dir, "dcon_stable_case.txt")
 if os.path.exists(dcon_stable_case_txt):
     os.remove(dcon_stable_case_txt)
+
+###############################################
+#					
+#	Functions
+#
+###############################################
 
 def exe(command):
     if args.dryRun:
@@ -102,6 +107,7 @@ def check_q_factor(nn):
 
                break
     
+###############################################
 
 if __name__=="__main__":
     
@@ -110,17 +116,19 @@ if __name__=="__main__":
         for file in files:
             equil_file = os.path.join(root, file)
             print("\nRunning {}".format(equil_file))
-            # 0.  replace equil_file
-            # 1.  run dcon in nn=1
-            # 1.5 during nn=1, check if qmin > 1, otherwise return false
-            # 2.  run dcon from nn=2 to 5
-            # 2.5 check stability 
+            '''
+             0.  replace equil_file
+             1.  run dcon in nn=1
+             2.  during nn=1, check if qmin > 1, otherwise return false
+             3.  check stability in nn=1
+             4.  check stability in nn=2~5
+
+            '''
             replace_equilfile(equil_file)
             replace_nn_mode(1)
             run_dcon()
             q_larger_1= check_q_factor(1)
             if not q_larger_1:
-                #print("q < 1, discard!")
                 continue
             else:
                 stable = check_stable(1)
