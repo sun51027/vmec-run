@@ -4,6 +4,30 @@ import shutil
 import argparse
 import subprocess
 
+'''
+Created by Shih Lin
+Date: 2023/09/20
+Status: temporary script, could be changed in the future
+
+Description:
+	- The script checks the stabiltiy of all equilibrium files under
+	a specific directory from equil code.
+	- It changes the inputs (eq_filename) in equil.in and loop nn=1 to 5 
+	in dcon.in.
+	- Once the equilibrium is confirmed to be stable in each mode
+	and q > 1, the filename	will be writen into dcon_stable_case.txt.
+Note:
+	- I'm investigating how to save plots after ./xdraw dcon.
+	- No way to check the Ideal, Resisitve and Balooning mode so far.
+	- One should change target_directory and dcon_dir to correct path.
+Usage:
+	python run_dcon.py -h (to check all commands)
+	python run_dcon.py -d -i input.first_init.vmec (to list jobs) 
+	python run_dcon.py 
+	python run_dcon.py 2>/dev/null (without showing system note)
+	 
+'''
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-d','--dryRun', help='do not execute the script', action='store_true')
 args = parser.parse_args()
