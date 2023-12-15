@@ -1,0 +1,44 @@
+&INDATA
+! VMEC execution parameters.
+LFORBAL = F,
+LFREEB = F,
+DELT = 1.0,
+TCON0 = 2.0,
+NFP = 1,
+NITER = 25000,
+NSTEP = 500,
+NTOR = 0, 
+MPOL = 6,
+NZETA = 1,
+NVACSKIP = 9,
+LASYM = F,
+NS_ARRAY =   11 ,   19  , 25, 49
+FTOL_ARRAY= 1.0e-7, 1.e-08, 1.0e-17, 1.0e-21
+SPRES_PED = 1.0,
+
+! Fitting parameters.
+GAMMA = 0.0,
+PHIEDGE = -0.05,
+BLOAT = 1.0,
+
+! Initial Position.
+RAXIS(0) = 0.75, !0.5
+ZAXIS(0) = 0.0,
+
+RBC(0,0) = 0.75, RBC(0,1) = 0.3751, RBC(0,2) = 0.0612, RBC(0,3) = 0.00,RBC(0,4) = 0.0003,
+ZBS(0,0) = 0.0,ZBS(0,1) = 0.75
+
+! Plasma pressure parameters.
+SPRES_PED = 1.0,
+PRES_SCALE = 1000.0,
+AM = 1.0, 5.0, 10.0
+pmass_type = 'two_power',
+
+! current 
+NCURR = 1,
+CURTOR = 1.2000E+05,
+! input.TCV_2023
+ac = 1.0   4.6666667 -9.0  -0.0   +3.3333333   0.0  0.0  0.0  -0.0  -0.0 0.0,
+
+/
+&END
