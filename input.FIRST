@@ -12,8 +12,9 @@ MPOL = 6,
 NZETA = 1,
 NVACSKIP = 9,
 LASYM = F,
-NS_ARRAY =   11 ,   19  , 25, 49
-FTOL_ARRAY= 1.0e-7, 1.e-08, 1.0e-17, 1.0e-21
+!NS_ARRAY =   11 ,   19  , 25, 49
+!FTOL_ARRAY= 1.0e-7, 1.e-08, 1.0e-17, 1.0e-21
+ns_array = 1 
 SPRES_PED = 1.0,
 
 ! Fitting parameters.
@@ -37,8 +38,9 @@ pmass_type = 'two_power',
 ! current 
 NCURR = 1,
 CURTOR = 1.2000E+05,
-! input.TCV_2023
-ac = 1.0   4.6666667 -9.0  -0.0   +3.3333333   0.0  0.0  0.0  -0.0  -0.0 0.0,
+ac = 1.0 +2.0 -5.0  0.0 +2.0.
 
 /
 &END
+! input.TCV_2023
+!ac = 1.0   4.6666667 -9.0  -0.0   +3.3333333   0.0  0.0  0.0  -0.0  -0.0 0.0,
