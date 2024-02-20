@@ -11,12 +11,20 @@ original_string=${inputfile}
 substring=$(echo "$original_string" | sed -n 's/^wout_\(.*\)\.txt$/\1/p')
 echo $substring
 
-echo "Plot snake structure:"
+ns=$(awk 'NR==3 {print $2}' ${inputfile})
+echo "ns_array from wout.txt: $ns"
+
+echo "VMEC to TERP..."
 cd ${vmec2terps_dir}
 cp ${wout} fort.8
 ./vmec2terps.x
 mv fort.73 ${vm3dp_dir}/fort.23
+
+echo "Recompile vm3dp and Plot snake ..."
 cd ${vm3dp_dir}
+new_value=$((ns-1))
+sed -i "3s/nit=[0-9]*/nit=${new_value}/" plovma.inc
+make clean && make
 ./vm3dbm90.x < vmaplo.dat_snake_n3
 cp fort.37 f6snake
 cp f6snake f6snake_${substring}
