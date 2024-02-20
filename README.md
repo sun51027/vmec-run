@@ -1,3 +1,9 @@
+## Back-up Rule
+* Put input files that you're still working on it in main directory
+
+* Once you obtain a preferable result, put it into directory with date. ex. tcv_axisym/240219
+
+* Only back up input and threed1 onto github.
 
 ## How to run
 
