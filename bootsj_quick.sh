@@ -64,9 +64,10 @@ fi
 echo "Run bootsj"
 time ./tprbal.x < ${inputvmec}.data 2>&1 | tee ${inputvmec}.log
 
-echo "Back-up fort.43 and fort.44"
+echo "Back-up fort.43 and fort.44, fort.49"
 cp fort.43 fort.43_${inputvmec}
 cp fort.44 fort.44_${inputvmec}
+cp fort.49 fort.49_${inputvmec}
 
 echo "[INFO] all jobs are done"
 
