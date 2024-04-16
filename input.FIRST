@@ -40,7 +40,7 @@ BLOAT = 1.0,
 
 ! Plasma current parameters.
 NCURR = 1,
-curtor = 0.100E+06 !0.200E+06,
+curtor = 0.120E+06 !0.200E+06,
 !ac = 1.0 +2.0 -5.0  0.0 +2.0,
 
 !ac = 0.7 0.0  2.6 0.0 -1.3 -4.0 0.0 0.0 0.0 0.0 2.0
