@@ -1,4 +1,14 @@
 #!/usr/bin/python
+'''
+Created by Shih Lin
+Date: 2024/03/20
+
+Description:
+	DESCUR convert R, phi ,z points into RBC ZBS coefficients in VMEC.
+Usage:
+	./descur2vmec.py -u
+   	 
+'''
 import os
 import numpy as np
 import argparse
