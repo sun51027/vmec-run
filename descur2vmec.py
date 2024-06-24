@@ -25,7 +25,7 @@ def parse_arguments():
 
 def get_user_input(parameter_name):
     try:
-        value = float(input("Enter {}: ".format(parameter_name)))
+        value = float(input("!Enter {}: ".format(parameter_name)))
         if value == 0:
             raise ValueError("Value cannot be 0.")
         return value

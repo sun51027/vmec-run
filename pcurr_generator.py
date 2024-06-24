@@ -1,12 +1,22 @@
 #!/usr/bin/python
 import numpy as np
 import argparse
+'''
+	Created by Lin Shih 
+	Date: 2024.6.19
+	usage:
+	./pcurr_generator.py --bsj [raw result from bsj routine] --input [FIRST_mmdd] --iter 1
+	./pcurr_generator.py --bsj [raw result from bsj routine] --input [FIRST_mmdd_bootsj1] --iter 2
 
+
+'''
 bsj_path = '/home/linshih/workspace/terp_bootsj'
 input_path = f'{bsj_path}/fort.43'
 parser = argparse.ArgumentParser()
 parser.add_argument('--curtor', help = 'total toroidal current', default = 8E+05, type = float)
 parser.add_argument('--bsj', help = 'raw bootstrap current', default = 0., type = str, required=True)
+parser.add_argument('--input', help = 'input file name e.g. FIRST_mmdd_bootsj1', type = str, required=True)
+#parser.add_argument('--iter', help = 'iteration', type = int, required=True)
 args = parser.parse_args()
 
 def discretise_ohmic_profile(s):
@@ -80,9 +90,9 @@ def main():
     ohmic_profile = discretise_ohmic_profile(s_values)
     norm_ohmic_profile = normalise_profile(ohmic_profile)
     #print_profile(norm_ohmic_profile)
-    
+        
     # read fort.43
-    bsj_profile = read_fort('fort.43')
+    bsj_profile = read_fort(f'fort.43_{args.input}')
     norm_bsj_profile = normalise_profile(-bsj_profile)
     print_profile(bsj_profile)
     #print("\n")
@@ -93,7 +103,7 @@ def main():
     '''get new profile'''
     scale = calculate_bsj_ratio()
     new_profile = iterate_profile(norm_ohmic_profile,scale,norm_bsj_profile)
-    write_new_profile(new_profile,radial,'new_profile.txt')
+    write_new_profile(new_profile,radial,f'new_profile_{args.input}.txt')
     #print_profile(new_profile)
     print("scale: %.5f " % scale)
 

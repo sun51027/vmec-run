@@ -84,3 +84,53 @@ pres_scale = 1000
 am = 1.0 5.0 10.0
 -------------------------
 
+!Enter major radius (R0)     : 0.45
+!Enter aspect ratio (epsilon): 1.4
+!Enter elongation (kappa)    : 2.5
+!Enter triangularity (delta) : 0.5
+!Enter number of points      : 100
+
+ RAXIS =  3.761E-01, ZAXIS =  3.053E-18
+  RBC(0,0) =   3.795428E-01   , ZBS(0,0) =   0.000000E+00
+  RBC(0,1) =   3.175027E-01   , ZBS(0,1) =   7.929638E-01
+  RBC(0,2) =   6.985502E-02   , ZBS(0,2) =  -9.982748E-03
+  RBC(0,3) =   3.136691E-03   , ZBS(0,3) =  -9.006581E-03
+  RBC(0,4) =   6.311132E-04   , ZBS(0,4) =   4.358747E-03
+  RBC(0,5) =   8.395879E-04   , ZBS(0,5) =   7.341802E-04
+  RBC(0,6) =  -7.181419E-05   , ZBS(0,6) =  -6.645086E-04
+  RBC(0,7) =  -5.226223E-05   , ZBS(0,7) =   7.970073E-05
+  RBC(0,8) =   5.807005E-05   , ZBS(0,8) =   1.294622E-04
+  RBC(0,9) =   6.068107E-07   , ZBS(0,9) =  -4.889870E-05
+  RBC(0,10) =  -1.262821E-05   , ZBS(0,10) =  -1.661400E-05
+  RBC(0,11) =   4.809757E-06   , ZBS(0,11) =   1.737490E-05
+  RBC(0,12) =   9.610811E-07   , ZBS(0,12) =   9.610811E-07
+  RBC(0,13) =  -3.220586E-06   , ZBS(0,13) =  -3.220586E-06
+!Enter major radius (R0)     : 0.45
+!Enter aspect ratio (epsilon): 1.4
+!Enter elongation (kappa)    : 2.4
+!Enter triangularity (delta) : 0.5
+!Enter number of points      : 100
+
+ RAXIS =  3.761E-01, ZAXIS = -1.776E-17
+  RBC(0,0) =   3.792768E-01   , ZBS(0,0) =   0.000000E+00
+  RBC(0,1) =   3.173777E-01   , ZBS(0,1) =   7.612256E-01
+  RBC(0,2) =   7.008050E-02   , ZBS(0,2) =  -8.807920E-03
+  RBC(0,3) =   3.251705E-03   , ZBS(0,3) =  -8.731308E-03
+  RBC(0,4) =   6.691509E-04   , ZBS(0,4) =   4.261375E-03
+  RBC(0,5) =   8.459768E-04   , ZBS(0,5) =   7.070216E-04
+  RBC(0,6) =  -6.855647E-05   , ZBS(0,6) =  -6.410187E-04
+  RBC(0,7) =  -4.823187E-05   , ZBS(0,7) =   8.440305E-05
+  RBC(0,8) =   5.814622E-05   , ZBS(0,8) =   1.229844E-04
+  RBC(0,9) =  -4.688419E-08   , ZBS(0,9) =  -4.849090E-05
+  RBC(0,10) =  -1.213299E-05   , ZBS(0,10) =  -1.442473E-05
+  RBC(0,11) =   4.993245E-06   , ZBS(0,11) =   1.671574E-05
+  RBC(0,12) =   5.525981E-07   , ZBS(0,12) =   5.525981E-07
+  RBC(0,13) =  -3.004605E-06   , ZBS(0,13) =  -3.004605E-06
+
+
+Enter major radius (R0)     : 0.45
+!Enter aspect ratio (epsilon): 1.4
+!Enter elongation (kappa)    : 2.3
+!Enter triangularity (delta) : 0.5
+!Enter number of points      : 100
+
