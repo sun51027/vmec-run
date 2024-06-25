@@ -16,12 +16,14 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--curtor', help = 'total toroidal current', default = 8E+05, type = float)
 parser.add_argument('--bsj', help = 'raw bootstrap current', default = 0., type = str, required=True)
 parser.add_argument('--input', help = 'input file name e.g. FIRST_mmdd_bootsj1', type = str, required=True)
+parser.add_argument('--ns', help = 'ns_array (mesh)', default = 289, type = int)
 #parser.add_argument('--iter', help = 'iteration', type = int, required=True)
 args = parser.parse_args()
 
 def discretise_ohmic_profile(s):
     #return 1-s-s**2+s**3
-    return 2 * (1 - s**7)**2 - (1 - s**3)**2
+    #return 2 * (1 - s**7)**2 - (1 - s**3)**2
+    return 2*( 1 - s**2)**2 - ( 1 - s )**2
 
 def read_fort(input_fort_name):
     try:
@@ -85,8 +87,8 @@ def calculate_bsj_ratio():
 def main():
     
     # discritise ohmic_profile from VMEC
-    ns = 286
-    s_values = np.linspace(0, 1, ns)  
+    mesh = args.ns - 3
+    s_values = np.linspace(0, 1, mesh)  
     ohmic_profile = discretise_ohmic_profile(s_values)
     norm_ohmic_profile = normalise_profile(ohmic_profile)
     #print_profile(norm_ohmic_profile)
